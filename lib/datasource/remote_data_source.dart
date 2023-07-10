@@ -18,7 +18,6 @@ abstract class RemoteDataSource {
 
   @GET('/images/search')
   Future<List<Dog>> getDogImages(
-    @Header('x-api-key') String apiKey,
     @Query('limit') int? limit,
     @Query('page') int? page,
     @Query('order') String? order,

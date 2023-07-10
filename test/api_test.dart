@@ -32,6 +32,14 @@ void main() {
             responseLevel: LogLevel.all,
             errorLevel: LogLevel.all,
           ),
+        )
+        ..interceptors.add(
+          InterceptorsWrapper(
+            onRequest: (options, handler) {
+              options.headers['x-api-key'] = Constants.apiKey;
+              return handler.next(options);
+            },
+          ),
         );
       remoteDataSource = RemoteDataSource(dio);
     },
@@ -39,7 +47,6 @@ void main() {
 
   test('get Dog', () async {
     final res = await remoteDataSource.getDogImages(
-      Constants.apiKey,
       null,
       null,
       null,

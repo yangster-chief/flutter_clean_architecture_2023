@@ -22,7 +22,6 @@ class _RemoteDataSource implements RemoteDataSource {
 
   @override
   Future<List<Dog>> getDogImages(
-    String apiKey,
     int? limit,
     int? page,
     String? order,
@@ -42,8 +41,7 @@ class _RemoteDataSource implements RemoteDataSource {
       r'sub_id': subId,
     };
     queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{r'x-api-key': apiKey};
-    _headers.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result =
         await _dio.fetch<List<dynamic>>(_setStreamType<List<Dog>>(Options(
