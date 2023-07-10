@@ -1,14 +1,15 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'dog.dart';
+part of 'image_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Dog _$DogFromJson(Map<String, dynamic> json) => Dog(
+ImageResponse _$ImageResponseFromJson(Map<String, dynamic> json) =>
+    ImageResponse(
       breeds: (json['breeds'] as List<dynamic>)
-          .map((e) => Breed.fromJson(e as Map<String, dynamic>))
+          .map((e) => BreedResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
       id: json['id'] as String,
       url: json['url'] as String,
@@ -16,7 +17,8 @@ Dog _$DogFromJson(Map<String, dynamic> json) => Dog(
       height: json['height'] as int,
     );
 
-Map<String, dynamic> _$DogToJson(Dog instance) => <String, dynamic>{
+Map<String, dynamic> _$ImageResponseToJson(ImageResponse instance) =>
+    <String, dynamic>{
       'breeds': instance.breeds,
       'id': instance.id,
       'url': instance.url,
@@ -24,11 +26,12 @@ Map<String, dynamic> _$DogToJson(Dog instance) => <String, dynamic>{
       'height': instance.height,
     };
 
-Breed _$BreedFromJson(Map<String, dynamic> json) => Breed(
-      weight:
-          SystemOfMeasurement.fromJson(json['weight'] as Map<String, dynamic>),
-      height:
-          SystemOfMeasurement.fromJson(json['height'] as Map<String, dynamic>),
+BreedResponse _$BreedResponseFromJson(Map<String, dynamic> json) =>
+    BreedResponse(
+      weight: SystemOfMeasurementResponse.fromJson(
+          json['weight'] as Map<String, dynamic>),
+      height: SystemOfMeasurementResponse.fromJson(
+          json['height'] as Map<String, dynamic>),
       id: json['id'] as int,
       name: json['name'] as String,
       bredFor: json['bred_for'] as String?,
@@ -39,7 +42,8 @@ Breed _$BreedFromJson(Map<String, dynamic> json) => Breed(
       referenceImageId: json['reference_image_id'] as String?,
     );
 
-Map<String, dynamic> _$BreedToJson(Breed instance) => <String, dynamic>{
+Map<String, dynamic> _$BreedResponseToJson(BreedResponse instance) =>
+    <String, dynamic>{
       'weight': instance.weight,
       'height': instance.height,
       'id': instance.id,
@@ -52,14 +56,15 @@ Map<String, dynamic> _$BreedToJson(Breed instance) => <String, dynamic>{
       'reference_image_id': instance.referenceImageId,
     };
 
-SystemOfMeasurement _$SystemOfMeasurementFromJson(Map<String, dynamic> json) =>
-    SystemOfMeasurement(
+SystemOfMeasurementResponse _$SystemOfMeasurementResponseFromJson(
+        Map<String, dynamic> json) =>
+    SystemOfMeasurementResponse(
       imperial: json['imperial'] as String,
       metric: json['metric'] as String,
     );
 
-Map<String, dynamic> _$SystemOfMeasurementToJson(
-        SystemOfMeasurement instance) =>
+Map<String, dynamic> _$SystemOfMeasurementResponseToJson(
+        SystemOfMeasurementResponse instance) =>
     <String, dynamic>{
       'imperial': instance.imperial,
       'metric': instance.metric,

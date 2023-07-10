@@ -29,3 +29,4 @@ class AppConfigure {
     runApp(const MyApp());
   }
 }
+//TODO : response model to entity, save local

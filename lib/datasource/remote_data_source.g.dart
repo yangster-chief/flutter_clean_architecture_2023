@@ -21,7 +21,7 @@ class _RemoteDataSource implements RemoteDataSource {
   String? baseUrl;
 
   @override
-  Future<List<Dog>> getDogImages(
+  Future<List<ImageResponse>> getDogImages(
     int? limit,
     int? page,
     String? order,
@@ -43,8 +43,8 @@ class _RemoteDataSource implements RemoteDataSource {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<Dog>>(Options(
+    final _result = await _dio
+        .fetch<List<dynamic>>(_setStreamType<List<ImageResponse>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -61,7 +61,7 @@ class _RemoteDataSource implements RemoteDataSource {
               baseUrl,
             ))));
     var value = _result.data!
-        .map((dynamic i) => Dog.fromJson(i as Map<String, dynamic>))
+        .map((dynamic i) => ImageResponse.fromJson(i as Map<String, dynamic>))
         .toList();
     return value;
   }

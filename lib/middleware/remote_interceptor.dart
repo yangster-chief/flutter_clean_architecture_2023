@@ -10,10 +10,8 @@ import 'package:flutter_clean_architecture_2023/constants.dart';
 ///
 class RemoteInterceptor implements InterceptorsWrapper {
   @override
-  void onError(DioException err, ErrorInterceptorHandler handler) {
-    // TODO: implement onError
-    return handler.next(err);
-  }
+  void onError(DioException err, ErrorInterceptorHandler handler) =>
+      handler.next(err);
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
@@ -22,8 +20,7 @@ class RemoteInterceptor implements InterceptorsWrapper {
   }
 
   @override
-  void onResponse(Response response, ResponseInterceptorHandler handler) {
-    // TODO: implement onResponse
-    return handler.next(response);
-  }
+  void onResponse(
+          Response<dynamic> response, ResponseInterceptorHandler handler) =>
+      handler.next(response);
 }

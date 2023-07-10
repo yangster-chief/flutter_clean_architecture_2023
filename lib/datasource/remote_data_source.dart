@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_clean_architecture_2023/src/data/model/image_response.dart';
 import 'package:flutter_clean_architecture_2023/src/data/models.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -17,7 +18,7 @@ abstract class RemoteDataSource {
   factory RemoteDataSource(Dio dio, {String baseUrl}) = _RemoteDataSource;
 
   @GET('/images/search')
-  Future<List<Dog>> getDogImages(
+  Future<List<ImageResponse>> getDogImages(
     @Query('limit') int? limit,
     @Query('page') int? page,
     @Query('order') String? order,
