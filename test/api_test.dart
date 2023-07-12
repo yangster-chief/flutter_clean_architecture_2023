@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_clean_architecture_2023/constants.dart';
-import 'package:flutter_clean_architecture_2023/datasource/remote_data_source.dart';
+import 'package:flutter_clean_architecture_2023/datasource/remote/remote_data_source.dart';
 import 'package:flutter_loggy_dio/flutter_loggy_dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:loggy/loggy.dart';

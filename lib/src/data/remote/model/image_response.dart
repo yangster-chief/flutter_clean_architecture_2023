@@ -92,7 +92,7 @@ extension BreedResponseExtension on BreedResponse {
   Breed toEntity() => Breed(
         weight: weight.toEntity(),
         height: height.toEntity(),
-        id: id.toString(),
+        id: id,
         name: name,
         bredFor: bredFor,
         breedGroup: breedGroup,

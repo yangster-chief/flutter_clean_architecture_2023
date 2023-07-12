@@ -5,4 +5,5 @@
 ///
 /// Description:
 ///
-export 'model/image_response.dart';
+export 'remote/model/image_response.dart';
+export 'local/model/dog_image_model.dart';

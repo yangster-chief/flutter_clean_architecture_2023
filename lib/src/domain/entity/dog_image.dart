@@ -24,7 +24,7 @@ class DogImage {
 class Breed {
   final SystemOfMeasurement weight;
   final SystemOfMeasurement height;
-  final String id;
+  final int id;
   final String name;
   final String? bredFor;
   final String? breedGroup;

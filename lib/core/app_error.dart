@@ -8,6 +8,7 @@
 enum AppErrorType {
   network,
   server,
+  local,
   unknown,
 }
 

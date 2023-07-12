@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_clean_architecture_2023/datasource/remote_data_source.dart';
+import 'package:flutter_clean_architecture_2023/datasource/remote/remote_data_source.dart';
 import 'package:flutter_clean_architecture_2023/middleware/remote_interceptor.dart';
+import 'package:flutter_clean_architecture_2023/module/hive/hive_service.dart';
 import 'package:flutter_loggy_dio/flutter_loggy_dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:loggy/loggy.dart';
@@ -14,6 +15,9 @@ import 'package:loggy/loggy.dart';
 ///
 @module
 abstract class AppModule {
+  @preResolve
+  Future<HiveService> get hiveService => HiveService.init();
+
   @lazySingleton
   Dio get dio => Dio()
     ..interceptors.addAll([

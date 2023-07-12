@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_clean_architecture_2023/src/data/model/image_response.dart';
 import 'package:flutter_clean_architecture_2023/src/data/models.dart';
 import 'package:retrofit/retrofit.dart';
 

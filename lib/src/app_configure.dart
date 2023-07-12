@@ -24,8 +24,10 @@ class AppConfigure {
     return _instance!;
   }
 
-  void run() {
-    configureDependencies();
+  void run() async {
+    WidgetsFlutterBinding.ensureInitialized();
+
+    await configureDependencies();
     runApp(const MyApp());
   }
 }
