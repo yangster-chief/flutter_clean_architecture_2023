@@ -59,3 +59,23 @@ void main() {
     // expect(res.data!.message, 'https://images.dog.ceo/breeds/terrier-norwich/n02094258_100.jpg');
   });
 }
+// void main() {
+//   test('getDogImages returns a list of dog images', () async {
+//     // Mock the remote data source to return a predetermined response.
+//     final mockRemoteDataSource = MockRemoteDataSource();
+//     when(mockRemoteDataSource.getDogImages(any, any, any, any, any, any, any))
+//         .thenAnswer((_) async => [DogImage(url: 'https://example.com/dog.jpg')]);
+//
+//     // Create the object to test.
+//     final myObject = MyObject(mockRemoteDataSource);
+//
+//     // Call the function to test.
+//     final result = await myObject.getDogImages();
+//
+//     // Check that the result is as expected.
+//     expect(result, isInstanceOf<Success<List<DogImage>>>());
+//     final successResult = result as Success<List<DogImage>>;
+//     expect(successResult.data, hasLength(1));
+//     expect(successResult.data[0].url, equals('https://example.com/dog.jpg'));
+//   });
+// }

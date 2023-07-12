@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_clean_architecture_2023/core/app_error.dart';
 import 'package:flutter_clean_architecture_2023/core/result.dart';
 import 'package:flutter_clean_architecture_2023/datasource/remote_data_source.dart';
+import 'package:flutter_clean_architecture_2023/src/data/model/image_response.dart';
 import 'package:flutter_clean_architecture_2023/src/domain/entity/dog_image.dart';
 import 'package:flutter_clean_architecture_2023/src/domain/remote_data_repository.dart';
 import 'package:injectable/injectable.dart';
@@ -22,20 +23,26 @@ class RemoteDataRepositoryImpl implements RemoteDataRepository {
   final RemoteDataSource _remoteDataSource;
 
   @override
-  Future<Result<List<DogImage>>> getDogImages() =>
-      _handleResult(() => _remoteDataSource.getDogImages(null, null, null, null, null, null, null), (p0) => null, () => {
-        return Failure(AppError(AppErrorType.network, p0.toString()));
-      });
+  Future<Result<List<DogImage>>> getDogImages() => _handleResult(
+        _remoteDataSource.getDogImages(
+            null, null, null, null, null, null, null),
+        (data) => data.map((e) => e.toEntity()).toList(),
+      );
 
-  Future<Result<R>> _handleResult<T, R>(
-    Future<T> Function() apiCall,
-    R Function(T) mapper,
-  ) =>
-      apiCall().then((value) => Success(mapper(value))).catchError((dynamic error) {
-        if (error is DioException) {
-          return Failure(AppError(type: AppErrorType.network, error: error));
-        } else {
-          return Failure(AppError(type: AppErrorType.unknown, error: error));
-        }
-      });
+  Future<Result<T>> _handleResult<T, R>(
+      Future<R> request, T Function(R data) mapper) async {
+    try {
+      final response = await request;
+      return Success(mapper(response));
+    } catch (e) {
+      if (e is DioException) {
+        return Failure(AppError(
+          type: AppErrorType.network,
+          error: e,
+        ));
+      } else {
+        return Failure(AppError(error: e));
+      }
+    }
+  }
 }
