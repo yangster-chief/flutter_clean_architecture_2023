@@ -1,5 +1,4 @@
-import 'package:flutter_clean_architecture_2023/core/app_error.dart';
-import 'package:flutter_clean_architecture_2023/core/result.dart';
+import 'package:flutter_clean_architecture_2023/core.dart';
 import 'package:flutter_clean_architecture_2023/datasource/local/local_data_source.dart';
 import 'package:flutter_clean_architecture_2023/src/data/models.dart';
 import 'package:flutter_clean_architecture_2023/src/domain/entity.dart';
@@ -27,10 +26,28 @@ class LocalDataRepositoryImpl implements LocalDataRepository {
       );
 
   @override
-  Future<void> saveDogImages(List<DogImage> dogImages) => _handleResult(
+  Future<Result<void>> saveDogImage(DogImage dogImage) => _handleResult(
+        _localDataSource.saveDogsImage(dogImage.toModel()),
+        (data) => data,
+      );
+
+  @override
+  Future<Result<void>> saveDogImages(List<DogImage> dogImages) => _handleResult(
         _localDataSource.saveDogImages(
           dogImages.map((e) => e.toModel()).toList(),
         ),
+        (data) => data,
+      );
+
+  @override
+  Future<Result<void>> deleteDogImage(String id) => _handleResult(
+        _localDataSource.deleteDogImage(id),
+        (data) => data,
+      );
+
+  @override
+  Future<Result<void>> clearDogImages() => _handleResult(
+        _localDataSource.clearDogImages(),
         (data) => data,
       );
 

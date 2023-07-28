@@ -1,6 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture_2023/injector.dart';
-import 'package:flutter_clean_architecture_2023/src/presentation/my_app.dart';
+import 'package:flutter_clean_architecture_2023/src/presentation/dog_image_screen.dart';
+import 'package:loggy/loggy.dart';
 
 ///
 /// flutter_clean_architecture_2023
@@ -26,9 +27,15 @@ class AppConfigure {
 
   void run() async {
     WidgetsFlutterBinding.ensureInitialized();
-
+    Loggy.initLoggy();
     await configureDependencies();
-    runApp(const MyApp());
+    runApp(
+      MaterialApp(
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const DogImageScreen(),
+      ),
+    );
   }
 }
-//TODO : response model to entity, save local

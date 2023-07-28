@@ -17,13 +17,5 @@ abstract class RemoteDataSource {
   factory RemoteDataSource(Dio dio, {String baseUrl}) = _RemoteDataSource;
 
   @GET('/images/search')
-  Future<List<ImageResponse>> getDogImages(
-    @Query('limit') int? limit,
-    @Query('page') int? page,
-    @Query('order') String? order,
-    @Query('has_breeds') String? hasBreeds,
-    @Query('breed_ids') String? breedIds,
-    @Query('category_ids') String? categoryIds,
-    @Query('sub_id') String? subId,
-  );
+  Future<List<ImageResponse>> getDogImages(@Query('limit') int? limit);
 }

@@ -61,7 +61,7 @@ Future<Result<T>> _handleResult<T, R>(
     if (e is DioException) {
       return Failure(AppError(
         type: AppErrorType.network,
-        error: e,
+        error: e.stackTrace,
       ));
     } else {
       return Failure(AppError(error: e));

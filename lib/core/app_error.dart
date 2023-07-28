@@ -13,14 +13,14 @@ enum AppErrorType {
 }
 
 class AppError implements Exception {
-  AppError({
+  const AppError({
     this.type = AppErrorType.unknown,
     this.error,
   });
 
-  AppErrorType type;
+  final AppErrorType type;
 
-  dynamic error;
+  final dynamic error;
 
   String get message => (error?.toString() ?? '');
 

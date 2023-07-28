@@ -7,3 +7,4 @@
 ///
 export 'remote/model/image_response.dart';
 export 'local/model/dog_image_model.dart';
+export 'local/model/breed_model.dart';

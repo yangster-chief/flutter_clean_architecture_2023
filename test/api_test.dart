@@ -46,15 +46,7 @@ void main() {
   );
 
   test('get Dog', () async {
-    final res = await remoteDataSource.getDogImages(
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-    );
+    final res = await remoteDataSource.getDogImages(null);
     logDebug('res: ${res.first.breeds.first.name}');
     // expect(res.data!.message, 'https://images.dog.ceo/breeds/terrier-norwich/n02094258_100.jpg');
   });

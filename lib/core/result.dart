@@ -1,4 +1,4 @@
-import 'package:flutter_clean_architecture_2023/core/app_error.dart';
+import 'package:flutter_clean_architecture_2023/core.dart';
 
 ///
 /// flutter_clean_architecture_2023
@@ -35,4 +35,18 @@ class Success<T> extends Result<T> {
 
 class Failure<T> extends Result<T> {
   const Failure(AppError? error) : super._(data: null, error: error);
+}
+
+extension FutureResultWhen<T> on Future<Result<T>> {
+  Future<void> when({
+    required Future<void> Function(T data) success,
+    required Future<void> Function(AppError error) failure,
+  }) async {
+    final result = await this;
+    if (result is Success) {
+      return success(result.data as T);
+    } else {
+      return failure(result.error!);
+    }
+  }
 }

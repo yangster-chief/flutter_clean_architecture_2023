@@ -21,25 +21,9 @@ class _RemoteDataSource implements RemoteDataSource {
   String? baseUrl;
 
   @override
-  Future<List<ImageResponse>> getDogImages(
-    int? limit,
-    int? page,
-    String? order,
-    String? hasBreeds,
-    String? breedIds,
-    String? categoryIds,
-    String? subId,
-  ) async {
+  Future<List<ImageResponse>> getDogImages(int? limit) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'limit': limit,
-      r'page': page,
-      r'order': order,
-      r'has_breeds': hasBreeds,
-      r'breed_ids': breedIds,
-      r'category_ids': categoryIds,
-      r'sub_id': subId,
-    };
+    final queryParameters = <String, dynamic>{r'limit': limit};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;

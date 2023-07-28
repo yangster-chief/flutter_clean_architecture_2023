@@ -19,11 +19,14 @@ class HiveService {
       ..registerAdapter(DogImageModelAdapter()) // typeId = 0
       ..registerAdapter(BreedModelAdapter()); // typeId = 1
     //
-    Hive
-      ..openBox<DogImageModel>(_dogImageBox)
-      ..openBox<BreedModel>(_breedBox);
+    await Future.wait(boxes);
     return HiveService();
   }
+
+  static final boxes = [
+    Hive.openBox<DogImageModel>(_dogImageBox),
+    Hive.openBox<BreedModel>(_breedBox),
+  ];
 
   Box<DogImageModel> get dogImage => Hive.box<DogImageModel>(_dogImageBox);
   Box<BreedModel> get breed => Hive.box<BreedModel>(_breedBox);

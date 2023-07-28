@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_clean_architecture_2023/core/app_error.dart';
-import 'package:flutter_clean_architecture_2023/core/result.dart';
+import 'package:flutter_clean_architecture_2023/core.dart';
 import 'package:flutter_clean_architecture_2023/datasource/remote/remote_data_source.dart';
 import 'package:flutter_clean_architecture_2023/src/data/remote/model/image_response.dart';
+import 'package:flutter_clean_architecture_2023/src/domain/dto.dart';
 import 'package:flutter_clean_architecture_2023/src/domain/entity/dog_image.dart';
 import 'package:flutter_clean_architecture_2023/src/domain/remote_data_repository.dart';
 import 'package:injectable/injectable.dart';
@@ -23,9 +23,8 @@ class RemoteDataRepositoryImpl implements RemoteDataRepository {
   final RemoteDataSource _remoteDataSource;
 
   @override
-  Future<Result<List<DogImage>>> getDogImages() => _handleResult(
-        _remoteDataSource.getDogImages(
-            null, null, null, null, null, null, null),
+  Future<Result<List<DogImage>>> getDogImages(int limit) => _handleResult(
+        _remoteDataSource.getDogImages(limit),
         (data) => data.map((e) => e.toEntity()).toList(),
       );
 

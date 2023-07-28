@@ -9,5 +9,5 @@ import 'package:flutter_clean_architecture_2023/src/domain/entity.dart';
 /// Description:
 ///
 abstract class RemoteDataRepository {
-  Future<Result<List<DogImage>>> getDogImages();
+  Future<Result<List<DogImage>>> getDogImages(int limit);
 }

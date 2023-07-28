@@ -17,13 +17,32 @@ class LocalDataSource {
 
   Future<List<DogImageModel>> getDogImages() {
     final box = _hive.dogImage;
-    final dogImages = box.values.toList();
-    return Future.value(dogImages);
+    final dogImages = box.values.toList()..shuffle();
+    return Future.value(dogImages.take(10).toList());
+  }
+
+  Future<void> saveDogsImage(DogImageModel dogImageModel) {
+    final box = _hive.dogImage;
+
+    box.put(dogImageModel.id, dogImageModel);
+    return Future.value();
   }
 
   Future<void> saveDogImages(List<DogImageModel> dogImages) {
     final box = _hive.dogImage;
     box.addAll(dogImages);
+    return Future.value();
+  }
+
+  Future<void> deleteDogImage(String id) {
+    final box = _hive.dogImage;
+    box.delete(id);
+    return Future.value();
+  }
+
+  Future<void> clearDogImages() {
+    final box = _hive.dogImage;
+    box.clear();
     return Future.value();
   }
 

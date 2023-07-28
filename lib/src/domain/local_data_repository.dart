@@ -1,4 +1,4 @@
-import 'package:flutter_clean_architecture_2023/core/result.dart';
+import 'package:flutter_clean_architecture_2023/core.dart';
 import 'package:flutter_clean_architecture_2023/src/domain/entity.dart';
 
 ///
@@ -9,6 +9,9 @@ import 'package:flutter_clean_architecture_2023/src/domain/entity.dart';
 /// Description:
 ///
 abstract class LocalDataRepository {
-  Future<void> saveDogImages(List<DogImage> dogImages);
   Future<Result<List<DogImage>>> getDogImages();
+  Future<Result<void>> saveDogImage(DogImage dogImage);
+  Future<Result<void>> saveDogImages(List<DogImage> dogImages);
+  Future<Result<void>> deleteDogImage(String id);
+  Future<Result<void>> clearDogImages();
 }
