@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter_clean_architecture_2023/core.dart';
 import 'package:flutter_clean_architecture_2023/datasource/remote/remote_data_source.dart';
 import 'package:flutter_clean_architecture_2023/src/data/remote/model/image_response.dart';
-import 'package:flutter_clean_architecture_2023/src/domain/dto.dart';
 import 'package:flutter_clean_architecture_2023/src/domain/entity/dog_image.dart';
 import 'package:flutter_clean_architecture_2023/src/domain/remote_data_repository.dart';
 import 'package:injectable/injectable.dart';

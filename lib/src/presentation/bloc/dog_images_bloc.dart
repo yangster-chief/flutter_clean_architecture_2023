@@ -31,7 +31,7 @@ class DogImagesBloc extends Bloc<DogImagesEvent, DogImagesState> {
         _deleteDogImageUseCase = deleteDogImageUseCase,
         _clearDogImagesUseCase = clearDogImagesUseCase,
         super(const RemoteDogImagesLoading()) {
-    on<GetRemoteDogImagesEvent>(_onRemoteGetDogImages);
+    on<GetRemoteDogImagesEvent>(_onGetRemoteDogImages);
     on<GetLocalDogImagesEvent>(_onGetLocalDogImages);
     on<SaveDogImageEvent>(_onSaveDogImage);
     on<DeleteDogImageEvent>(_onDeleteDogImage);
@@ -43,7 +43,7 @@ class DogImagesBloc extends Bloc<DogImagesEvent, DogImagesState> {
   final DeleteDogImageUseCase _deleteDogImageUseCase;
   final ClearDogImagesUseCase _clearDogImagesUseCase;
 
-  void _onRemoteGetDogImages(
+  void _onGetRemoteDogImages(
     GetRemoteDogImagesEvent event,
     Emitter<DogImagesState> emit,
   ) async {
