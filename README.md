@@ -14,3 +14,14 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Get Dog Api key
+[Link here for get api key](https://www.thedogapi.com/)
+Locate `constants.dart` file under `lib` folder.
+
+```dart
+class Constants {
+  static const String apiKey =
+      REPLACE_YOUR_DOG_API_KEY_HERE;
+}
+```
